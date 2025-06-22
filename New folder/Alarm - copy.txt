@@ -1,0 +1,22 @@
+#define GAS_SENSOR A0  // analog input pin connected to MQ-2 sensor
+#define LED_PIN D2     // digital output pin connected to an LED
+
+void setup() {
+  pinMode(GAS_SENSOR, INPUT);
+  pinMode(LED_PIN, OUTPUT);
+  Serial.begin(115200);
+}
+
+void loop() {
+  int gasValue = analogRead(GAS_SENSOR);
+  Serial.print("Gas value: ");
+  Serial.println(gasValue);
+  
+  if (gasValue > 500) {
+    digitalWrite(LED_PIN, HIGH); // turn on LED if gas value is above 550
+  } else {
+    digitalWrite(LED_PIN, LOW); // turn off LED if gas value is below 550
+  }
+  
+  delay(1000);
+}

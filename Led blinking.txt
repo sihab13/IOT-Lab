@@ -1,0 +1,45 @@
+
+#define BLYNK_PRINT Serial
+
+
+#define BLYNK_TEMPLATE_ID "TMPLtC2UZiFB"
+#define BLYNK_TEMPLATE_NAME "LED Control"
+#define BLYNK_AUTH_TOKEN "lsK4clV1gJsCE5vJiWwIH7j2Qt0YqrKw"
+
+#include <ESP8266WiFi.h>
+#include <BlynkSimpleEsp8266.h>
+
+// Your WiFi credentials.
+// Set password to "" for open networks.
+char ssid[] = "Bachelor";
+char pass[] = "hp515.com";
+
+int ledPin = D0;
+
+void setup()
+{
+  // Debug console
+  Serial.begin(9600);
+
+  Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
+
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop()
+{
+  Blynk.run();
+}
+
+BLYNK_WRITE(V0) // This function will be called every time the virtual button V0 is pressed
+{
+  int value = param.asInt(); // Get the value of the virtual button V0
+  if (value == 1) {
+    digitalWrite(ledPin, HIGH); // Turn on the LED
+  } else {
+    digitalWrite(ledPin, LOW); // Turn off the LED
+  }
+}
+
+
+

@@ -1,0 +1,49 @@
+from graphics import *
+
+# Get user input for diamond size
+diamond_size = int(input("Enter the size of the diamond: "))
+
+# Set up the window
+win = GraphWin("Diamond Shapes", 800, 500)
+win.setBackground("white")
+
+# Draw horizontal diamond
+p1 = Point(200 - diamond_size, 250)
+p2 = Point(200, 250 - diamond_size)
+p3 = Point(200 + diamond_size, 250)
+p4 = Point(200, 250 + diamond_size)
+
+diamond1 = Polygon(p1, p2, p3, p4)
+diamond1.setFill("blue")
+diamond1.setOutline("blue")
+diamond1.draw(win)
+
+# Draw label for horizontal diamond
+label1 = Text(Point(200, 300), "Horizontal")
+label1.draw(win)
+
+# Draw vertical diamond
+p1 = Point(400, 250 - diamond_size)
+p2 = Point(400 + diamond_size, 250)
+p3 = Point(400, 250 + diamond_size)
+p4 = Point(400 - diamond_size, 250)
+
+diamond2 = Polygon(p1, p2, p3, p4)
+diamond2.setFill("red")
+diamond2.setOutline("red")
+diamond2.draw(win)
+
+# Draw label for vertical diamond
+label2 = Text(Point(400, 300), "Vertical")
+label2.draw(win)
+
+# Loop until the user closes the window
+while True:
+    mouse = win.getMouse()
+    if mouse is not None:
+        continue
+    else:
+        break
+
+# Close the window
+win.close()
